@@ -27,6 +27,35 @@ describe('NotesView class', () => {
 
       expect(document.querySelectorAll('div.notes').length).toBe(2);
       expect(document.querySelector('div.notes').innerText).toEqual('Buy milk');
-    })
-  })
+    });
+  });
+  
+  describe('addNotes', () => {
+    it('click adds a note', () => {
+      const model = new NotesModel;
+      const view = new NotesView(model);
+
+      const textBox = document.getElementById('note-input');
+      textBox.value = "This is a test note"
+      const buttonEl = document.getElementById('add-note');
+      buttonEl.click();
+
+      expect(document.getElementsByClassName('notes').length).toBe(1);
+      expect(document.getElementsByClassName('notes')[0].innerText).toBe('This is a test note');
+    });
+    it('clicking twice will remove the previous display', () => {
+      const model = new NotesModel;
+      const view = new NotesView(model);
+
+      const textBox = document.getElementById('note-input');
+      textBox.value = "This is a test note"
+      const buttonEl = document.getElementById('add-note');
+      buttonEl.click();
+      buttonEl.click();
+
+      console.log(model.getNotes());
+
+      expect(document.getElementsByClassName('notes').length).toBe(2);
+    });
+  });
 });
