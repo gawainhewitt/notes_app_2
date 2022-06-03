@@ -1,7 +1,7 @@
 class NotesApi {
-  async loadnotes(url, callback) {
+  async loadNotes(callback) {
     try {
-      const result = await fetch(url);
+      const result = await fetch('http://localhost:3000/notes', );
       const data = await result.json();
       callback(data);
     } catch (error) {
