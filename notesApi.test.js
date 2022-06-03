@@ -11,7 +11,7 @@ describe('notesApi class', () => {
   it('calls fetch and loads note from server', async () => {
     const api = new NotesApi();
     let result;
-    await api.loadnotes('http://localhost:3000/notes', (notes) => {
+    await api.loadNotes((notes) => {
       result = notes;
     });
     expect(result[0]).toBe('This note is coming from the server');
