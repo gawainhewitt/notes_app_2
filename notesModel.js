@@ -1,6 +1,5 @@
 class NotesModel {
-  constructor(api) {
-    this.api = api;
+  constructor() {
     this.items = []
   }
 
@@ -10,7 +9,6 @@ class NotesModel {
 
   addNote(item) {
    this.items.push(item) 
-   this.api.createNote(item);
   }
 
   reset() {
