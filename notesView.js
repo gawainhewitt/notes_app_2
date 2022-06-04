@@ -1,12 +1,13 @@
 class NotesView {
-  constructor(model){
+  constructor(model, api){
     this.model = model;
-
+    this.api = api;
     const button = document.getElementById('add-note');
     button.addEventListener('click', () => {
       this.clearDisplay();
       const input = document.getElementById('note-input');
       this.model.addNote(input.value);
+      this.api.createNote(input.value);
       this.displayNotes();
       input.value = '';
     })
