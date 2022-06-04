@@ -18,17 +18,18 @@ describe('NotesView class', () => {
   
   describe('addNotes', () => {
     it('adds a typed in note when button clicked and displays it on page', () => {
-      model.getNotes.mockReturnValue(['This is a test note']);
+      const testNote = 'This is a test note';
+      model.getNotes.mockReturnValue([testNote]);
       const view = new NotesView(model, api);
       const textBox = document.getElementById('note-input');
-      textBox.value = "This is a test note";
+      textBox.value = testNote;
       const buttonEl = document.getElementById('add-note');
       buttonEl.click();
 
       expect(document.getElementsByClassName('notes').length).toBe(1);
-      expect(document.getElementsByClassName('notes')[0].innerText).toBe('This is a test note');
+      expect(document.getElementsByClassName('notes')[0].innerText).toBe(testNote);
       expect(api.createNote).toHaveBeenCalledTimes(1);
+      expect(api.createNote).toHaveBeenCalledWith(testNote);
     });
-    
   });
 });
